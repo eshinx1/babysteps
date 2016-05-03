@@ -4,7 +4,7 @@
   angular
     .module('baby', [
       /* Shared Modules */
-      'ui.router',
+      'ui.router',git
       'ngStorage',
       'ui.bootstrap',
       /* Feature areas */
