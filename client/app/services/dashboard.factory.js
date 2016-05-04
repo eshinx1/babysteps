@@ -5,11 +5,12 @@
     .module('baby')
     .factory('dashboard', dashboard);
 
-    function dashboard($http){
+    function dashboard($http,$state){
       var service = {
         getUser: getUser,
         addChild: addChild,
-        removeThisChild : removeThisChild
+        removeThisChild: removeThisChild,
+        goMilestone: goMilestone
       };
       return service;
 
@@ -27,6 +28,12 @@
             console.log('resp', resp);
             console.log('resp.success', resp.success);
           });
+      }
+
+      function goMilestone(condition) {
+        console.log(condition);
+        var conditionObj = {condition: condition};
+        $state.go('milestone', conditionObj);
       }
     }
 })();

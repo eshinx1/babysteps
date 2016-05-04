@@ -8,7 +8,7 @@
       function ChildController($uibModalInstance, dashboard) {
         var vm = this;
 
-        vm.conditions = ['Normal', 'Cerebral Palsy', 'Down Syndrome'];
+        vm.conditions = ['None', 'Cerebral Palsy', 'Down Syndrome'];
 
         vm.addChild = function (firstName, lastName, birthday, condition){
           //console.log("Addchild in ChildController", name, " + ", birthday, " + ", condition);

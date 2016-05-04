@@ -10,6 +10,7 @@
       vm.displayChildren = displayChildren;
       vm.displayUsers = displayUsers;
       vm.removeChild = removeChild;
+      vm.milestonePage = milestonePage;
 
       function displayChildren(){
         dashboard.getUser()
@@ -39,6 +40,12 @@
       function removeChild(childFirstName){
         console.log('on click this is passed into removeChild', childFirstName);
         dashboard.removeThisChild(childFirstName, 'chend2');
+      }
+
+      function milestonePage(condition){
+        console.log("Child Condition",condition);
+        console.log("Heading to Milestones!")
+        dashboard.goMilestone(condition);
       }
 
     }

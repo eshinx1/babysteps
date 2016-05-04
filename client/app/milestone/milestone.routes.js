@@ -14,7 +14,8 @@
             templateUrl: 'app/milestone/milestone.html',
             controller: 'MilestoneCtrl as milestone'
           }
-        }
+        },
+        params: { condition: null }
       });
   }
 })();
