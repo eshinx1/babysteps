@@ -5,7 +5,7 @@
     .module('baby.milestone')
     .config(config);
 
-  function config ($stateProvider) {
+  function config($stateProvider) {
     $stateProvider
       .state('milestone', {
         url: '/milestone',
@@ -14,7 +14,8 @@
             templateUrl: 'app/milestone/milestone.html',
             controller: 'MilestoneCtrl as milestone'
           }
-        }
+        },
+        params: { condition: null }
       });
   }
 })();

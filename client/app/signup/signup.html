@@ -22,11 +22,12 @@
         signup.password
         )"> Create Account
         </button>
+        <button ng-click="signup.redirectToLogin()">Have an account? Log In</button>
     </form>
   </div>
 <br>
-    <div ng-if="signup.error" class="">
-      <div class="">
+    <div ng-if="signup.error" class="error"> <!-- if green/red -->
+      <div>
         <p></p>
         <p>{{signup.message}}</p>
       </div>

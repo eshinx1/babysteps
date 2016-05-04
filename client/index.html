@@ -5,37 +5,49 @@
     <!-- stylesheet -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <!-- dependencies -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- app -->
     <script src="app/app.module.js"></script>
     <script src="app/app.run.js"></script>
     <script src="app/app.constants.js"></script>
+    <!-- services -->
     <script src="app/services/dashboard.factory.js"></script>
     <script src="app/services/milestone.factory.js"></script>
     <script src="app/services/auth.factory.js"></script>
+    <!-- landing -->
     <script src="app/landing/landing.module.js"></script>
     <script src="app/landing/landing.controller.js"></script>
     <script src="app/landing/landing.routes.js"></script>
+    <!-- login -->
     <script src="app/login/login.module.js"></script>
     <script src="app/login/login.controller.js"></script>
     <script src="app/login/login.routes.js"></script>
+    <!-- signup -->
     <script src="app/signup/signup.module.js"></script>
     <script src="app/signup/signup.controller.js"></script>
     <script src="app/signup/signup.routes.js"></script>
+    <!-- dashboard -->
     <script src="app/dashboard/dashboard.module.js"></script>
     <script src="app/dashboard/dashboard.controller.js"></script>
     <script src="app/dashboard/dashboard.routes.js"></script>
+    <!-- milestone -->
     <script src="app/milestone/milestone.module.js"></script>
     <script src="app/milestone/milestone.controller.js"></script>
     <script src="app/milestone/milestone.routes.js"></script>
+    <!-- about & tech -->
     <script src="app/about/about.module.js"></script>
     <script src="app/about/about.routes.js"></script>
     <script src="app/tech/tech.module.js"></script>
     <script src="app/tech/tech.routes.js"></script>
+    <script src="app/child/child.module.js"></script>
+    <script src="app/child/child.controller.js"></script>
+    <script src="app/child/child.routes.js"></script>
 
   </head>
   <body ng-app="baby">
@@ -50,6 +62,9 @@
         </div>
       </div>
       </div>
+
+      <!-- logout in navbar -->
+      <!-- <button ng-if="nav.authed" style="text-align:right" ng-click="nav.logout()">Logout</button>  -->
 
       <!-- template -->
     <div ui-view></div>

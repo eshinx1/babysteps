@@ -1,12 +1,33 @@
-<div ui-view>
+<div ui-view style="width: 70%; margin: auto">
 
   <h1>Dashboard</h1>
 
-  <button ng-click="dashboard.displayUsers()">See the User!</button>
-  <div ng-repeat="child in dashboard.children">
-    <li>{{child}}</li>
+
+  <div>
+    <div class="container">
+      <br />
+      <button class="btn btn-primary" ng-click="dashboard.open()">ADD</button>&nbsp;Add a child
+    </div>
   </div>
-</div>
+
+ <div ng-init="dashboard.displayChildren()">
+    <div ng-repeat="child in dashboard.children">
+
+
+        <div>{{child.firstName}} {{child.lastName}}
+          <button style="float:right">Edit Child</button>
+        <br>
+        <button ng-click="dashboard.milestonePage(child.condition)" style="float:right">MileStones</button>
+        <br>
+        {{child.condition}}<button ng-click="dashboard.removeChild(child.firstName)" style="float:right">Remove Child</button>
+        <br>
+        <br>
+        </div>
+
+
+    </div>
+  </div>
+</displayChildrenv>
 
 <!-- FOR CHAT SYSTEM, SUPER ROUGH -->
 

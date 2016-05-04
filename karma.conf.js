@@ -18,6 +18,7 @@ module.exports = function(config) {
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'node_modules/angular-ui-router/release/angular-ui-router.js',
+      'client/bower_components/ngstorage/ngStorage.js',
       'client/app/signup/signup.module.js',
       'client/app/landing/landing.module.js',
       'client/app/dashboard/dashboard.module.js',

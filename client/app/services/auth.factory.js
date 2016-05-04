@@ -5,51 +5,36 @@
     .module('baby')
     .factory('auth', auth);
 
-  // $localStorage, $state
-  function auth($http, $state) {
+  function auth($http, $state, $localStorage) {
     return {
-      signup: signup
+      current: current,
+      signup: signup, 
+      logout: logout
     };
 
-    function signup(userObj) {
-      console.log(userObj);
-      return $http.post('/signup', userObj)
-        .success(function(resp) {
-          console.log('resp', resp);
-          console.log('resp.success', resp.success);
-          
-          if (resp.success) {
-            $state.go('dashboard');
-            // $rootScope.$broadcast('loggedIn');
-        }
-          // $localStorage.username = username;
-          // $localStorage.token = data.token;
-          // $http.defaults.headers.common.username = username;
-          // $http.defaults.headers.common.token = data.token;
-        }
-        );
-      }
-
+  function current() {
+    return {
+      username: $localStorage.username,
+      token: $localStorage.token
+    };
   }
+
+  function signup(userObj) {
+    return $http.post('/signup', userObj)
+      .success(function(resp, data) {
+        if (resp.success) {
+          $localStorage.username = userObj.username;
+          $localStorage.token = data.token;
+          $http.defaults.headers.common.username = userObj.username;
+          $http.defaults.headers.common.token = data.token;
+          $state.go('dashboard');
+        }
+      });
+  }
+
+  function logout() {
+    $localStorage.$reset();
+    $state.go('landing');
+  }
+}
 })();
-
-    //   signIn: function (username, password) {
-    //     $http.post('/landing/login', {
-    //       user: {
-    //         username: username,
-    //         password: password
-    //       }
-    //     }).success(function (data) {
-    //       $localStorage.username = username;
-    //       $localStorage.token = data.token;
-    //       $http.defaults.headers.common.username = username;
-    //       $http.defaults.headers.common.token = data.token;
-    //       $state.go('tab.classrooms');
-    //     });
-    //   },
-
-    //   signOut: function () {
-    //     $localStorage.$reset();
-    //     $state.go('landing');
-    //   }
-    // };

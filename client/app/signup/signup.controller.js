@@ -12,9 +12,15 @@
     vm.error = false;
     vm.message = '';
 
+    // Functions
+    vm.redirectToLogin = redirectToLogin;
     vm.signup = signup;
+
+    function redirectToLogin() {
+      $state.go('login');
+    }
   
-    function signup (firstname, lastname, email, username, password) {
+    function signup(firstname, lastname, email, username, password) {
       var userObj = {
         firstname: firstname,
         lastname: lastname,

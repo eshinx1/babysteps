@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-// var auth = require('../tokens.js');
+// var tokens = require('../tokens.js');
 
 // var User = require('../db');
 

@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-// var auth = require('../tokens.js');
+var Q = require('q');
+var tokens = require('../tokens');
+var db = require('../db');
 
-var User = require('../db.js');
-
+// Routes
 router.post('/', function(req, res) {
   var user = req.body;
-  console.log('req.body', req.body);
 
   if (!validate(user)) {
     res.json({
@@ -14,42 +14,50 @@ router.post('/', function(req, res) {
       message: 'User information validation failed.'
     });
 
-  // if data validation passes, insert user object into database
-  // for later: if username already exists;
   } else {
-    console.log('into else db function');
-    var newUser = new User();
-
+    var newUser = new db.users();
       newUser.firstname = user.firstname;
       newUser.lastname = user.lastname;
       newUser.email = user.email;
       newUser.username = user.username;
       newUser.password = user.password;
-
-      res.json({
-        success: true,
-        message: 'User inserted into database.',
-        // token: auth.genToken(user)
-      });
-
-    newUser.save(function(err) {
-      if(err) {
-        console.error(err);
-        // res.json({
-        //   success: false,
-        //   message: // 'username already exists!'
-        // });
-      } else {
-          console.log('saved');
-        } 
-    });
-  }
+      getUserBy(newUser, res);
+    }
 });
 
-// helper function
+// Helper Functions
 function validate(user) {
-  console.log(user);
   return user.firstname && user.lastname && user.email && user.username && user.password;
+}
+
+function getUserBy(userObj, res) {
+  var username = userObj.username;
+  return new Q(db.users.findOne({'username': username}).exec())
+  .then(function(foundUser) {
+    createAccount(userObj, foundUser, res);
+  });
+}
+
+function createAccount(newUser, foundUser, res) {
+  var username = newUser.username;
+  if (foundUser) {
+    res.json({
+      success: false,
+      message: 'Username already exists!'
+    });
+  } else {
+      newUser.save(function(err) {
+        if (err) {
+          console.error(err);
+        } else {
+            res.json({
+              success: true,
+              message: 'User inserted into database.',
+              token: tokens.generateToken(username), username: username
+            });
+          } 
+      });
+  }
 }
 
 module.exports = router;
