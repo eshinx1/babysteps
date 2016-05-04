@@ -8,7 +8,7 @@
   function auth($http, $state, $localStorage) {
     return {
       current: current,
-      signup: signup, 
+      signup: signup,
       logout: logout
     };
 
