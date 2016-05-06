@@ -15,7 +15,12 @@
             controller: 'MilestoneCtrl as milestone'
           }
         },
-        params: { condition: null }
+        data: {
+          requiredLogin: true
+        },
+        params: {
+          condition: null
+        }
       });
   }
 })();

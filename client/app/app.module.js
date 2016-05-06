@@ -6,7 +6,11 @@
       /* Shared Modules */
       'ui.router',
       'ngStorage',
+      'mwl.calendar',
       'ui.bootstrap',
+
+      'ngAnimate',
+
       /* Feature areas */
       'baby.landing',
       'baby.signup',
@@ -14,7 +18,8 @@
       'baby.dashboard',
       'baby.milestone',
       'baby.about',
-      'baby.tech'
+      'baby.tech',
+      'baby.events'
     ]);
 })();
 
