@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 
 //routes
+var helper = require('./routes/helpers')
 var signup = require('./routes/signup');
 var login = require('./routes/login');
 var milestone = require('./routes/milestone');

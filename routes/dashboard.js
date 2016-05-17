@@ -3,6 +3,7 @@ var router = express.Router();
 var Q = require('q');
 var verify = require('../tokens.js').verifyToken;
 var db = require('../db.js');
+// var helper = require('./helper.js')
 
 // authentication
 router.use(function(req, res, next) {

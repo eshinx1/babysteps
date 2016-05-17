@@ -5,7 +5,7 @@
     .module('baby.events')
     .controller('EventsAddCtrl', EventsAddCtrl);
 
-    function EventsAddCtrl($state, events, $uibModalInstance, event) {
+    function EventsAddCtrl($state, events, $uibModalInstance, event,  $rootScope) {
 
     // initialize
     var vm = this;
@@ -59,7 +59,9 @@
       eventObj.childName = vm.childName;
       eventObj.notes = notes;
       events.addEvent(eventObj)
-        .then(function() {
+        .then(function(data) {
+          $rootScope.$broadcast('add_event', data);
+          console.log("This is data returned after store",data.data.events)
           close();
         });
     }
